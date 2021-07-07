@@ -3,14 +3,15 @@
 Recipe tested on 2021-07-07
 
 
-1.  Set up your virtual box working area
+**1.  Set up your virtual box working area**
 ```
        cd <your-vm-singularity-directory>
        
        vagrant ssh
 ```
 
-2.  If you don't already have this set up or want to redo it, do this.
+**2.  If you don't already have this set up or want to redo it, do this.**
+
     You can choose your own directory name.  Here, it's "my-work1"
 ```
        mkdir my-work1    
@@ -21,12 +22,12 @@ Recipe tested on 2021-07-07
    This will take a while as it will download about 2.3 GB of stuff.
     
     
-3.  Start the eic shell from your directory (here, it's my-work1)
+**3.  Start the eic shell from your directory (here, it's my-work1)**
 ```
        ./eic-shell
 ```
 
-4.  Make a development directory, check out some stuff, compile, ...
+**4.  Make a development directory, check out some stuff, compile, ...**
 ```
        mkdir development
        export LD_LIBRARY_PATH=$PWD/development/lib:$LD_LIBRARY_PATH
@@ -67,25 +68,27 @@ Recipe tested on 2021-07-07
        export FULL_CAL_SCRIPT_DIR=$PWD/reconstruction_benchmarks/benchmarks/clustering/scripts
 ```
 
-5. Check out my working code
+**5. Check out the working code for this repository**
 ```
        git clone https://github.com/owen234/eic-dev1.git
        cd eic-dev1/
 ```
 
 
-6. Build an executable that runs pythia (the MC generator) and run it
+**6. Build an executable that runs pythia (the MC generator) and run it**
 ```
        sh build-pythia-exe.sh
 
        ./pythia_dis gen-100evts.hepmc
 ```
+   This will create a file named gen-100evts.hepmc, which is a human-readable text file of
+   generated events.
    Note that there are a few settings at the top of the source code file (pythia_dis.cxx).
    For example, N_events and Q2_min.  You will probably need to adjust these.  When you do,
-   recompile with build-pythia-exe.sh.
+   recompile with build-pythia-exe.sh.  
 
 
-7. Run the detector simulation and reconstruction
+**7. Run the detector simulation and reconstruction**
 
      First, edit the file athena/compact/ecal.xml.  For now, make sure that ecal_barrel.xml is used,
      not ecal_barrel_hybrid.xml.  That is, it should look something like this in athena/compact/ecal.xml
@@ -102,4 +105,22 @@ Recipe tested on 2021-07-07
 ```
        bash full_cal_clusters.sh --inputFile gen-100evts --nevents 100 |& tee reco-100evts-try1a.log
 ```
+ This will create two output files: sim_gen-100evts.root and rec_gen-100evts.root.  To quickly inspect the
+ TTree structure of these files, try something like
+```
+       rootls -t rec_gen-100evts.root |& tee rec-trees.txt
+```
 
+**8. Transfer the root output to your laptop for analysis in a jupyter notebook**
+
+Check out this repository in a working directory on your laptop (outside your virtual box).
+You can transfer the root files from the virtual box to your laptop with something like this,
+where the ssh password is "vagrant".
+
+```
+scp -p -P 2222 "vagrant@127.0.0.1:/home/vagrant/my-work1/eic-dev1/*.root" .
+```
+
+Check that the intput filenames in the notebook match your files.  If not, update them.
+
+   
