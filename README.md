@@ -90,8 +90,8 @@ Recipe tested on 2021-07-07
 
 **7. Run the detector simulation and reconstruction**
 
-     First, edit the file athena/compact/ecal.xml.  For now, make sure that ecal_barrel.xml is used,
-     not ecal_barrel_hybrid.xml.  That is, it should look something like this in athena/compact/ecal.xml
+  First, edit the file athena/compact/ecal.xml.  For now, make sure that ecal_barrel.xml is used,
+  not ecal_barrel_hybrid.xml.  That is, it should look something like this in athena/compact/ecal.xml
 
 ```
           <include ref="ecal_barrel.xml"/>
