@@ -22,7 +22,7 @@ struct settings {
   bool        success      = false;
   //double      Q2_min       = 4.0;
   double      Q2_min       = 100.0;
-  int         N_events     = 1000;
+  int         N_events     = 100;
   mode        selected     = mode::none;
 };
 

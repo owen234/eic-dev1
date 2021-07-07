@@ -5,7 +5,7 @@
 ##         TODO: need to configurability to the generator exe 
 
 
-export LOCAL_PREFIX=/home/vagrant/development/common_bench
+#export LOCAL_PREFIX=/home/vagrant/rtest1/common_bench
 
 echo "Compiling   pythia_dis.cxx ..."
 g++ pythia_dis.cxx -o pythia_dis  \
