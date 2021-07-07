@@ -12,7 +12,8 @@ Recipe tested on 2021-07-07
 
 **2.  If you don't already have this set up or want to redo it, do this.**
 
-    You can choose your own directory name.  Here, it's "my-work1"
+You can choose your own directory name.  Here, it's "my-work1"
+
 ```
        mkdir my-work1    
        cd my-work1       
