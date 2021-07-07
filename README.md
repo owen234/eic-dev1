@@ -123,4 +123,5 @@ scp -p -P 2222 "vagrant@127.0.0.1:/home/vagrant/my-work1/eic-dev1/*.root" .
 
 Check that the intput filenames in the notebook match your files.  If not, update them.
 
+The jupyter notebook in this repository is HadronicReco1.ipynb.
    
