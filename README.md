@@ -83,3 +83,23 @@ Recipe tested on 2021-07-07
    Note that there are a few settings at the top of the source code file (pythia_dis.cxx).
    For example, N_events and Q2_min.  You will probably need to adjust these.  When you do,
    recompile with build-pythia-exe.sh.
+
+
+7. Run the detector simulation and reconstruction
+
+     First, edit the file athena/compact/ecal.xml.  For now, make sure that ecal_barrel.xml is used,
+     not ecal_barrel_hybrid.xml.  That is, it should look something like this in athena/compact/ecal.xml
+
+```
+          <include ref="ecal_barrel.xml"/>
+          <!--include ref="ecal_barrel_hybrid.xml"/-->
+```
+
+  In the above two lines, the second one is a comment (note the extra !-- at the beginning and -- at the end).
+
+  Now, run the detector simulation and reconstruction.
+
+```
+       bash full_cal_clusters.sh --inputFile gen-100evts --nevents 100 |& tee reco-100evts-try1a.log
+```
+
